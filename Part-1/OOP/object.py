@@ -6,4 +6,3 @@ class Car:
 mycar = Car("Ford", "F150")
 
 print(mycar.make)
-print(mycar.model)

@@ -6,5 +6,5 @@ provider "azurerm" {
 
 resource "azurerm_resource_group" "youtuberesource"{
     name = "youtubetest92"
-    location = "eastus"
+    location = "centralus"
 }
