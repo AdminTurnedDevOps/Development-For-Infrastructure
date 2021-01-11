@@ -1,0 +1,36 @@
+name: Terraform Build and Deploy
+ 
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    env:
+      ARM_CLIENT_ID: "fccf21bb-bb76-4589-9af7-5d81599cfb05"
+      ARM_CLIENT_SECRET: ${{secrets.CLIENT_SECRET}}
+      ARM_SUBSCRIPTION_ID: "220284d2-6a19-4781-87f8-5c564ec4fec9"
+      ARM_TENANT_ID: "fbbd9689-2869-42b8-92fb-db1c89b662ff"
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+  
+    - name: HashiCorp - Setup Terraform
+      uses: hashicorp/setup-terraform@v1.2.1
+    
+    - name: Terraform init
+      run: cd /home/runner/work/Development-For-Infrastructure/Development-For-Infrastructure/Part-5/vnet && terraform init
+    
+    - name: Terraform plan
+      run: cd /home/runner/work/Development-For-Infrastructure/Development-For-Infrastructure/Part-5/vnet && terraform plan
+    
+    - name: Terraform apply
+      run: cd /home/runner/work/Development-For-Infrastructure/Development-For-Infrastructure/Part-5/vnet && terraform apply -auto-approve
