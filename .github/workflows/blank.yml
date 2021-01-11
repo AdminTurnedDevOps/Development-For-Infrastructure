@@ -26,7 +26,7 @@ jobs:
       uses: Azure/login@v1
       with:
         # Paste output of `az ad sp create-for-rbac` as value of secret variable: AZURE_CREDENTIALS
-        creds: ${{ AZURE_CREDENTIALS }}
+        creds: ${{ secret.AZURE_CREDENTIALS }}
     - name: HashiCorp - Setup Terraform
       uses: hashicorp/setup-terraform@v1.2.1
     
