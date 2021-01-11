@@ -27,13 +27,13 @@ jobs:
       uses: hashicorp/setup-terraform@v1.2.1
     
     - name: Terraform init
-      run: terraform init -backend-config=\Development-For-Infrastructure\Development-For-Infrastructure\Part-5\vnet\
+      run: cd .\Part-5\vnet\ && terraform init
     
     - name: Terraform plan
-      run: terraform plan -backend-config=\Development-For-Infrastructure\Development-For-Infrastructure\Part-5\vnet\
+      run: cd .\Part-5\vnet\ && terraform plan
     
     - name: Terraform apply
-      run: terraform apply -backend-config=\Development-For-Infrastructure\Development-For-Infrastructure\Part-5\vnet\
+      run: cd .\Part-5\vnet\ && terraform apply
 
     
     
